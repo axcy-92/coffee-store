@@ -1,8 +1,6 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.bse.backend.assignment.coffee-store ' is invalid and this project uses 'com.bse.backend.assignment.coffeestore' instead.
-
 # Getting Started
 
 ### Reference Documentation
