@@ -19,7 +19,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Tag(name = "Coffee Store Service APIs: Toppings", description = "API endpoints for manage toppings")
 @Validated
-public interface ToppingsController {
+public interface ToppingController {
 
     @Operation(summary = "List all toppings")
     @ApiResponse(responseCode = "200", description = "Toppings retrieved successfully", content = @Content(

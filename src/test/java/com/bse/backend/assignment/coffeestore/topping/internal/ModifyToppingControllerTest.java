@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-class ModifyToppingsControllerTest {
+class ModifyToppingControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
