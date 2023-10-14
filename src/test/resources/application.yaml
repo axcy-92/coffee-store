@@ -1,16 +1,9 @@
-server:
-  port: 8080
-  servlet:
-    context-path: /coffee-store
-  tomcat:
-    uri-encoding: UTF-8
-
 spring:
   datasource:
     driverClassName: org.h2.Driver
-    url: jdbc:h2:file:./database/coffee-store
-    username: admin
-    password: bestseller
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
     initialize: true
   sql.init.mode: always
   jpa:
@@ -27,8 +20,6 @@ spring:
     console:
       enabled: true
       path: /h2-ui
-      settings:
-        web-allow-others: true
 
 coffee-store:
   token:
@@ -36,4 +27,4 @@ coffee-store:
 
 logging:
   level:
-    org.springframework.security: TRACE
+    root: DEBUG
