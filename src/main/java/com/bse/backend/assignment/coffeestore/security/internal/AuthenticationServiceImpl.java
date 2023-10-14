@@ -4,7 +4,6 @@ import com.bse.backend.assignment.coffeestore.security.api.AuthenticationService
 import com.bse.backend.assignment.coffeestore.security.api.JwtService;
 import com.bse.backend.assignment.coffeestore.security.api.exception.UserAlreadyExistsException;
 import com.bse.backend.assignment.coffeestore.security.api.model.JwtAuthenticationResponse;
-import com.bse.backend.assignment.coffeestore.security.api.model.Role;
 import com.bse.backend.assignment.coffeestore.security.api.model.SignInRequest;
 import com.bse.backend.assignment.coffeestore.security.api.model.SignUpRequest;
 import com.bse.backend.assignment.coffeestore.security.internal.persistence.User;
@@ -37,7 +36,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
+                .role(request.getRole())
                 .build();
 
         userRepository.save(user);

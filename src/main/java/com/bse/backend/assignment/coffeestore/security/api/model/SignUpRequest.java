@@ -29,5 +29,7 @@ public class SignUpRequest implements Serializable {
     @NotNull
     @NotBlank
     private String password;
+
+    private Role role = Role.USER;
 }
 
