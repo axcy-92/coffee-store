@@ -24,6 +24,12 @@ spring:
 coffee-store:
   token:
     signingKey: QUU2Nzk4MjFGMDY0OUMxNUY2QzUxODExMzBFRkVDRjZDQTVFNEVCMDRFNDY5Qjg3NTEwQjQ4QUE0NzI1QTQ0OQ==
+  discount:
+    rule-percent:
+      threshold: 12
+      discount-percent: 0.25
+    rule-free-item:
+      min-items: 3
 
 logging:
   level:

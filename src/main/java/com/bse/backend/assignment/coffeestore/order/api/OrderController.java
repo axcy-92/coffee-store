@@ -1,10 +1,10 @@
-package com.bse.backend.assignment.coffeestore.drink.api;
+package com.bse.backend.assignment.coffeestore.order.api;
 
+import com.bse.backend.assignment.coffeestore.common.exception.NotFoundException;
 import com.bse.backend.assignment.coffeestore.common.model.ErrorResponse;
 import com.bse.backend.assignment.coffeestore.common.model.ValidationErrorResponse;
-import com.bse.backend.assignment.coffeestore.drink.api.exception.DrinkNotFoundException;
-import com.bse.backend.assignment.coffeestore.drink.api.model.Drink;
-import com.bse.backend.assignment.coffeestore.drink.api.model.InputDrink;
+import com.bse.backend.assignment.coffeestore.order.api.model.InputOrder;
+import com.bse.backend.assignment.coffeestore.order.api.model.Order;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -18,27 +18,27 @@ import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@Tag(name = "Coffee Store Service APIs: Drinks", description = "API endpoints for manage drinks")
+@Tag(name = "Coffee Store Service APIs: Orders", description = "API endpoints for manage orders")
 @Validated
-public interface DrinkController {
+public interface OrderController {
 
-    @Operation(summary = "List all drinks")
-    @ApiResponse(responseCode = "200", description = "Drinks retrieved successfully", content = @Content(
+    @Operation(summary = "List all orders for current user")
+    @ApiResponse(responseCode = "200", description = "Orders retrieved successfully", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
-            schema = @Schema(implementation = Drink.class)
+            schema = @Schema(implementation = Order.class)
     ))
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
-    ResponseEntity<List<Drink>> getAllDrinks();
+    ResponseEntity<List<Order>> getAllOrders() throws NotFoundException;
 
-    @Operation(summary = "Get a drink by ID")
-    @ApiResponse(responseCode = "200", description = "Drink retrieved successfully", content = @Content(
+    @Operation(summary = "Get an order by ID")
+    @ApiResponse(responseCode = "200", description = "Order retrieved successfully", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
-            schema = @Schema(implementation = Drink.class)
+            schema = @Schema(implementation = Order.class)
     ))
-    @ApiResponse(responseCode = "404", description = "Drink not found", content = @Content(
+    @ApiResponse(responseCode = "404", description = "Order not found", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
@@ -46,12 +46,12 @@ public interface DrinkController {
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
-    ResponseEntity<Drink> getDrinkById(Long id) throws DrinkNotFoundException;
+    ResponseEntity<Order> getOrderById(Long id) throws NotFoundException;
 
-    @Operation(summary = "Create a new drink")
-    @ApiResponse(responseCode = "200", description = "Drink created successfully", content = @Content(
+    @Operation(summary = "Create a new order for current user")
+    @ApiResponse(responseCode = "200", description = "Order created successfully", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
-            schema = @Schema(implementation = Drink.class)
+            schema = @Schema(implementation = Order.class)
     ))
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
@@ -61,18 +61,18 @@ public interface DrinkController {
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
-    ResponseEntity<Drink> createDrink(@Valid InputDrink newDrink);
+    ResponseEntity<Order> createOrder(@Valid InputOrder inputOrder) throws NotFoundException;
 
-    @Operation(summary = "Update an existing drink")
-    @ApiResponse(responseCode = "200", description = "Drink updated successfully", content = @Content(
+    @Operation(summary = "Update an existing order")
+    @ApiResponse(responseCode = "200", description = "Order updated successfully", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
-            schema = @Schema(implementation = Drink.class)
+            schema = @Schema(implementation = Order.class)
     ))
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ValidationErrorResponse.class)
     ))
-    @ApiResponse(responseCode = "404", description = "Drink not found", content = @Content(
+    @ApiResponse(responseCode = "404", description = "Order not found", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
@@ -80,11 +80,11 @@ public interface DrinkController {
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
-    ResponseEntity<Drink> updateDrink(Long id, @Valid InputDrink newDrink) throws DrinkNotFoundException;
+    ResponseEntity<Order> updateOrder(Long id, @Valid InputOrder inputOrder) throws NotFoundException;
 
-    @Operation(summary = "Delete a drink by ID")
-    @ApiResponse(responseCode = "204", description = "Drink deleted successfully")
-    @ApiResponse(responseCode = "404", description = "Drink not found", content = @Content(
+    @Operation(summary = "Delete a order by ID")
+    @ApiResponse(responseCode = "204", description = "Order deleted successfully")
+    @ApiResponse(responseCode = "404", description = "Order not found", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
@@ -92,5 +92,5 @@ public interface DrinkController {
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
-    ResponseEntity<Void> deleteDrink(Long id);
+    ResponseEntity<Void> deleteOrder(Long id);
 }

@@ -2,6 +2,7 @@ package com.bse.backend.assignment.coffeestore.topping.api;
 
 import com.bse.backend.assignment.coffeestore.common.model.ErrorResponse;
 import com.bse.backend.assignment.coffeestore.common.model.ValidationErrorResponse;
+import com.bse.backend.assignment.coffeestore.topping.api.exception.ToppingNotFoundException;
 import com.bse.backend.assignment.coffeestore.topping.api.model.InputTopping;
 import com.bse.backend.assignment.coffeestore.topping.api.model.Topping;
 import io.swagger.v3.oas.annotations.Operation;
@@ -45,7 +46,7 @@ public interface ToppingController {
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
-    ResponseEntity<Topping> getToppingById(Long id);
+    ResponseEntity<Topping> getToppingById(Long id) throws ToppingNotFoundException;
 
     @Operation(summary = "Create a new topping")
     @ApiResponse(responseCode = "200", description = "Topping created successfully", content = @Content(
@@ -79,7 +80,7 @@ public interface ToppingController {
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
-    ResponseEntity<Topping> updateTopping(Long id, @Valid InputTopping newTopping);
+    ResponseEntity<Topping> updateTopping(Long id, @Valid InputTopping newTopping) throws ToppingNotFoundException;
 
     @Operation(summary = "Delete a topping by ID")
     @ApiResponse(responseCode = "204", description = "Topping deleted successfully")

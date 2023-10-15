@@ -2,7 +2,7 @@ package com.bse.backend.assignment.coffeestore.security.api;
 
 import com.bse.backend.assignment.coffeestore.common.model.ErrorResponse;
 import com.bse.backend.assignment.coffeestore.common.model.ValidationErrorResponse;
-import com.bse.backend.assignment.coffeestore.security.api.model.JwtAuthenticationResponse;
+import com.bse.backend.assignment.coffeestore.security.api.model.AuthenticationResponse;
 import com.bse.backend.assignment.coffeestore.security.api.model.SignInRequest;
 import com.bse.backend.assignment.coffeestore.security.api.model.SignUpRequest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,7 +23,7 @@ public interface AuthenticationController {
     @Operation(summary = "Sign up a new user")
     @ApiResponse(responseCode = "200", description = "User successfully signed up", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
-            schema = @Schema(implementation = JwtAuthenticationResponse.class)
+            schema = @Schema(implementation = AuthenticationResponse.class)
     ))
     @ApiResponse(responseCode = "400", description = "Validation error", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
@@ -37,12 +37,12 @@ public interface AuthenticationController {
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
-    ResponseEntity<JwtAuthenticationResponse> signUp(@Valid SignUpRequest request);
+    ResponseEntity<AuthenticationResponse> signUp(@Valid SignUpRequest request);
 
     @Operation(summary = "Sign in a user")
     @ApiResponse(responseCode = "200", description = "User successfully signed in", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
-            schema = @Schema(implementation = JwtAuthenticationResponse.class)
+            schema = @Schema(implementation = AuthenticationResponse.class)
     ))
     @ApiResponse(responseCode = "400", description = "Validation error", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
@@ -56,5 +56,5 @@ public interface AuthenticationController {
             mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = ErrorResponse.class)
     ))
-    ResponseEntity<JwtAuthenticationResponse> signIn(@Valid SignInRequest request);
+    ResponseEntity<AuthenticationResponse> signIn(@Valid SignInRequest request);
 }

@@ -9,12 +9,14 @@ import com.bse.backend.assignment.coffeestore.topping.internal.persistence.Toppi
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Log4j2
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ToppingServiceImpl implements ToppingService {
 
     public static final String TOPPING_NOT_FOUND = "Topping not found";
@@ -30,12 +32,19 @@ public class ToppingServiceImpl implements ToppingService {
     }
 
     @Override
-    public Topping getToppingById(Long id) {
+    public Topping getToppingById(Long id) throws ToppingNotFoundException {
         return repository.findById(id)
                 .map(entity -> {
                     log.debug("Found {} topping by id {}", entity, id);
                     return mapper.toDto(entity);
                 }).orElseThrow(() -> new ToppingNotFoundException(TOPPING_NOT_FOUND));
+    }
+
+    @Override
+    public List<Topping> getAllToppingsById(List<Long> ids) {
+        List<ToppingEntity> entities = repository.findAllById(ids);
+
+        return mapper.toDtoList(entities);
     }
 
     @Override
@@ -49,17 +58,17 @@ public class ToppingServiceImpl implements ToppingService {
     }
 
     @Override
-    public Topping updateTopping(Long id, InputTopping updatedTopping) {
-        ToppingEntity toppingEntity = repository.findById(id)
+    public Topping updateTopping(Long id, InputTopping topping) throws ToppingNotFoundException {
+        ToppingEntity entity = repository.findById(id)
                 .orElseThrow(() -> new ToppingNotFoundException(TOPPING_NOT_FOUND));
-        log.debug("Update topping {} with values {}", toppingEntity, updatedTopping);
+        log.debug("Update topping {} with values {}", entity, topping);
 
-        if (updatedTopping == null) return mapper.toDto(toppingEntity);
+        if (topping == null) return mapper.toDto(entity);
 
-        toppingEntity.setName(updatedTopping.getName());
-        toppingEntity.setPrice(updatedTopping.getPrice());
+        ToppingEntity updatedEntity = mapper.toEntity(topping);
+        updatedEntity.setId(id);
 
-        ToppingEntity updatedEntity = repository.save(toppingEntity);
+        updatedEntity = repository.save(updatedEntity);
         log.debug("Topping has been successfully updated: {}", updatedEntity);
 
         return mapper.toDto(updatedEntity);

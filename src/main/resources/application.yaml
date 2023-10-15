@@ -32,8 +32,14 @@ spring:
 
 coffee-store:
   token:
-    signingKey: QUU2Nzk4MjFGMDY0OUMxNUY2QzUxODExMzBFRkVDRjZDQTVFNEVCMDRFNDY5Qjg3NTEwQjQ4QUE0NzI1QTQ0OQ==
+    signing-key: QUU2Nzk4MjFGMDY0OUMxNUY2QzUxODExMzBFRkVDRjZDQTVFNEVCMDRFNDY5Qjg3NTEwQjQ4QUE0NzI1QTQ0OQ==
+  discount:
+    rule-percent:
+      threshold: 12 # Discount condition: if the total cost of the cart is more than 12 euros
+      discount-percent: 0.25 # 25% discount
+    rule-free-item:
+      min-items: 3 # Discount condition: if there are 3 or more drinks in the cart
 
 logging:
   level:
-    org.springframework.security: TRACE
+    com.bse.backend.assignment.coffeestore: DEBUG

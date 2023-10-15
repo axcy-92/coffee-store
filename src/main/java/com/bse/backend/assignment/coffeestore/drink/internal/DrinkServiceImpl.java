@@ -9,12 +9,14 @@ import com.bse.backend.assignment.coffeestore.drink.internal.persistence.DrinkRe
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Log4j2
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class DrinkServiceImpl implements DrinkService {
 
     public static final String DRINK_NOT_FOUND = "Drink not found";
@@ -30,7 +32,7 @@ public class DrinkServiceImpl implements DrinkService {
     }
 
     @Override
-    public Drink getDrinkById(Long id) {
+    public Drink getDrinkById(Long id) throws DrinkNotFoundException {
         return repository.findById(id)
                 .map(entity -> {
                     log.debug("Found {} drink by id {}", entity, id);
@@ -49,17 +51,17 @@ public class DrinkServiceImpl implements DrinkService {
     }
 
     @Override
-    public Drink updateDrink(Long id, InputDrink updatedDrink) {
-        DrinkEntity drinkEntity = repository.findById(id)
+    public Drink updateDrink(Long id, InputDrink drink) throws DrinkNotFoundException {
+        DrinkEntity entity = repository.findById(id)
                 .orElseThrow(() -> new DrinkNotFoundException(DRINK_NOT_FOUND));
-        log.debug("Update drink {} with values {}", drinkEntity, updatedDrink);
+        log.debug("Update drink {} with values {}", entity, drink);
 
-        if (updatedDrink == null) return mapper.toDto(drinkEntity);
+        if (drink == null) return mapper.toDto(entity);
 
-        drinkEntity.setName(updatedDrink.getName());
-        drinkEntity.setPrice(updatedDrink.getPrice());
+        DrinkEntity updatedEntity = mapper.toEntity(drink);
+        updatedEntity.setId(id);
 
-        DrinkEntity updatedEntity = repository.save(drinkEntity);
+        updatedEntity = repository.save(updatedEntity);
         log.debug("Drink has been successfully updated: {}", updatedEntity);
 
         return mapper.toDto(updatedEntity);

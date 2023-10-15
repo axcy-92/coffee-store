@@ -1,8 +1,8 @@
 package com.bse.backend.assignment.coffeestore.security.internal.controller;
 
 import com.bse.backend.assignment.coffeestore.security.api.AuthenticationController;
-import com.bse.backend.assignment.coffeestore.security.api.AuthenticationService;
-import com.bse.backend.assignment.coffeestore.security.api.model.JwtAuthenticationResponse;
+import com.bse.backend.assignment.coffeestore.security.api.UserService;
+import com.bse.backend.assignment.coffeestore.security.api.model.AuthenticationResponse;
 import com.bse.backend.assignment.coffeestore.security.api.model.SignInRequest;
 import com.bse.backend.assignment.coffeestore.security.api.model.SignUpRequest;
 import lombok.RequiredArgsConstructor;
@@ -18,20 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthenticationControllerImpl implements AuthenticationController {
 
-    private final AuthenticationService service;
+    private final UserService service;
 
     @Override
     @PostMapping("/sign-up")
-    public ResponseEntity<JwtAuthenticationResponse> signUp(@RequestBody SignUpRequest request) {
-        JwtAuthenticationResponse response = service.signUp(request);
+    public ResponseEntity<AuthenticationResponse> signUp(@RequestBody SignUpRequest request) {
+        AuthenticationResponse response = service.create(request);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Override
     @PostMapping("/sign-in")
-    public ResponseEntity<JwtAuthenticationResponse> signIn(@RequestBody SignInRequest request) {
-        JwtAuthenticationResponse response = service.signIn(request);
+    public ResponseEntity<AuthenticationResponse> signIn(@RequestBody SignInRequest request) {
+        AuthenticationResponse response = service.login(request);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
