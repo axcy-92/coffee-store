@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Represents the response returned when a user is successfully authenticated in the Coffee Store application.
+ * It includes user information and an authentication token.
+ */
 @AllArgsConstructor
 @Builder
 @Data

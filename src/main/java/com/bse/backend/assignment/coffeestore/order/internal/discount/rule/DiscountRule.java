@@ -5,5 +5,7 @@ import com.bse.backend.assignment.coffeestore.order.internal.persistence.OrderEn
 import java.math.BigDecimal;
 
 public interface DiscountRule {
+
     BigDecimal apply(OrderEntity order);
+
 }

@@ -11,6 +11,9 @@ import lombok.NoArgsConstructor;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * A data class representing the request to sign up and create a new user account.
+ */
 @AllArgsConstructor
 @Builder
 @Data
@@ -32,4 +35,3 @@ public class SignUpRequest implements Serializable {
 
     private Role role = Role.USER;
 }
-

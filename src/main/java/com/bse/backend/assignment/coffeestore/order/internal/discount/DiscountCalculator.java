@@ -35,4 +35,5 @@ public class DiscountCalculator {
         log.debug("Effective discount: {} (rule: {})", effectiveDiscount, effectiveRuleName);
         return effectiveDiscount;
     }
+
 }

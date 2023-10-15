@@ -72,4 +72,5 @@ public class DrinksControllerImpl implements DrinkController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }

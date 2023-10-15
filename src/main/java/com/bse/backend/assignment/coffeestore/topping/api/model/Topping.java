@@ -9,6 +9,10 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * A class representing a topping entity for JSON responses.
+ * This class is used to serialize topping information into JSON format for responses.
+ */
 @AllArgsConstructor
 @Builder
 @Data
@@ -21,4 +25,5 @@ public class Topping implements Serializable {
     private Long id;
     private String name;
     private BigDecimal price;
+
 }

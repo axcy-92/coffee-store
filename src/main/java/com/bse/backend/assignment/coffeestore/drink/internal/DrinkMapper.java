@@ -11,9 +11,7 @@ import java.util.List;
 public interface DrinkMapper {
 
     Drink toDto(DrinkEntity entity);
-
     List<Drink> toDtoList(List<DrinkEntity> entities);
-
     DrinkEntity toEntity(InputDrink dto);
 
 }

@@ -74,4 +74,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private boolean validateHeader(String authenticationHeader) {
         return authenticationHeader != null && authenticationHeader.startsWith(HEADER_PREFIX);
     }
+
 }

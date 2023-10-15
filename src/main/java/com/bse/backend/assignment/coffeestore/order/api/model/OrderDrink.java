@@ -9,6 +9,9 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * Represents a drink included in an order with its details. This class is serializable and used for JSON responses.
+ */
 @AllArgsConstructor
 @Builder
 @Data
@@ -21,4 +24,5 @@ public class OrderDrink implements Serializable {
     private Long id;
     private String name;
     private BigDecimal price;
+
 }

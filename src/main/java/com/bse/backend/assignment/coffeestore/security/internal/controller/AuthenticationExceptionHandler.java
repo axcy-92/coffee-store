@@ -58,4 +58,5 @@ public class AuthenticationExceptionHandler {
         var response = new ErrorResponse(HttpStatus.FORBIDDEN.getReasonPhrase(), ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
     }
+
 }

@@ -35,4 +35,5 @@ public class AuthenticationControllerImpl implements AuthenticationController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
 }

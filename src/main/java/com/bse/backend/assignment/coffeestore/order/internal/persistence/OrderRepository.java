@@ -8,7 +8,9 @@ import java.util.Optional;
 
 @Repository
 public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
+
     List<OrderEntity> findAllByUsername(String username);
     Optional<OrderEntity> findByUsernameAndId(String username, Long id);
     void deleteByUsernameAndId(String username, Long id);
+
 }

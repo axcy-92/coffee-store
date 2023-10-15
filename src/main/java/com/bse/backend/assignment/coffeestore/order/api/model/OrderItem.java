@@ -10,6 +10,10 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Represents an item in an order, consisting of a drink and optional toppings, along with its price.
+ * This class is serializable and used for JSON responses.
+ */
 @AllArgsConstructor
 @Builder
 @Data
@@ -22,4 +26,5 @@ public class OrderItem implements Serializable {
     private OrderDrink drink;
     private List<OrderTopping> toppings;
     private BigDecimal price;
+
 }

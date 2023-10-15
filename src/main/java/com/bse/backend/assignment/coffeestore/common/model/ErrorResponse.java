@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class ErrorResponse {
+
     private String reason;
     private String message;
+
 }

@@ -16,10 +16,19 @@ import org.springframework.validation.annotation.Validated;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+/**
+ * An interface defining API endpoints for user authentication in the Coffee Store service.
+ */
 @Tag(name = "Coffee Store Service APIs: Authentication", description = "API endpoints for user authentication")
 @Validated
 public interface AuthenticationController {
 
+    /**
+     * Sign up a new user and create a user account.
+     *
+     * @param request The request to sign up a new user.
+     * @return A response containing user information and an authentication token upon successful sign-up.
+     */
     @Operation(summary = "Sign up a new user")
     @ApiResponse(responseCode = "200", description = "User successfully signed up", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,
@@ -39,6 +48,12 @@ public interface AuthenticationController {
     ))
     ResponseEntity<AuthenticationResponse> signUp(@Valid SignUpRequest request);
 
+    /**
+     * Sign in a user and authenticate the user.
+     *
+     * @param request The request to sign in a user.
+     * @return A response containing user information and an authentication token upon successful sign-in.
+     */
     @Operation(summary = "Sign in a user")
     @ApiResponse(responseCode = "200", description = "User successfully signed in", content = @Content(
             mediaType = APPLICATION_JSON_VALUE,

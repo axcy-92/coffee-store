@@ -39,4 +39,5 @@ public interface OrderMapper {
 
         orderEntity.setPrice(totalCartAmount);
     }
+
 }

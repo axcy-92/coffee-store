@@ -36,4 +36,5 @@ public class DiscountRuleFreeItem implements DiscountRule {
         log.debug("Calculated free item discount amount: {} (free item: {})", discount, minPriceItem.get());
         return discount;
     }
+
 }

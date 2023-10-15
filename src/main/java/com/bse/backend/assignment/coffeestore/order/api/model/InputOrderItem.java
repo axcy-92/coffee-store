@@ -12,6 +12,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents an input request for modifying an order item. This class is serializable and used for JSON requests.
+ */
 @AllArgsConstructor
 @Builder
 @Data
@@ -27,4 +30,5 @@ public class InputOrderItem implements Serializable {
 
     @Builder.Default
     private List<@NotNull @Positive Long> toppingIds = new ArrayList<>();
+
 }

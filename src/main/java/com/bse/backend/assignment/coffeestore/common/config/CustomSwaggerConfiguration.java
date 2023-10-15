@@ -35,4 +35,5 @@ public class CustomSwaggerConfiguration {
                 .bearerFormat("JWT")
                 .scheme("bearer");
     }
+
 }

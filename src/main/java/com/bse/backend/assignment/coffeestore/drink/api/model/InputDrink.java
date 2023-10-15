@@ -12,6 +12,10 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * A class representing a request object for modifying a drink in JSON format.
+ * This class is used to deserialize JSON requests for modifying drink properties.
+ */
 @AllArgsConstructor
 @Builder
 @Data
@@ -27,4 +31,5 @@ public class InputDrink implements Serializable {
     @NotNull
     @Positive
     private BigDecimal price;
+
 }

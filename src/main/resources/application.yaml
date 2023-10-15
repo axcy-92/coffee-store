@@ -19,10 +19,10 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
   h2:
     console:
       enabled: true
@@ -42,4 +42,4 @@ coffee-store:
 
 logging:
   level:
-    com.bse.backend.assignment.coffeestore: DEBUG
+    com.bse.backend.assignment.coffeestore: INFO

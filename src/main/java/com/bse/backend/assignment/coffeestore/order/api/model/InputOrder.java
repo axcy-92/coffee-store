@@ -11,6 +11,9 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Represents an input request for modifying an order. This class is serializable and used for JSON requests.
+ */
 @AllArgsConstructor
 @Builder
 @Data
@@ -22,4 +25,5 @@ public class InputOrder implements Serializable {
 
     @Size(min = 1)
     private List<@Valid InputOrderItem> items;
+
 }

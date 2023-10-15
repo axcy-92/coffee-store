@@ -9,6 +9,10 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * Represents a topping for a drink in an order.
+ * This class is serializable and used for JSON responses.
+ */
 @AllArgsConstructor
 @Builder
 @Data
@@ -21,4 +25,5 @@ public class OrderTopping implements Serializable {
     private Long id;
     private String name;
     private BigDecimal price;
+
 }

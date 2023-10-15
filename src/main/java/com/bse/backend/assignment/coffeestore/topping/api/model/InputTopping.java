@@ -12,6 +12,10 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * A class representing a request object for modifying a topping in JSON format.
+ * This class is used to deserialize JSON requests for modifying topping properties.
+ */
 @AllArgsConstructor
 @Builder
 @Data

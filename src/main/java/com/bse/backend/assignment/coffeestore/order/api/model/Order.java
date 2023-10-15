@@ -10,6 +10,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Represents an order with its details. This class is serializable and used for JSON responses.
+ */
 @AllArgsConstructor
 @Builder
 @Data
@@ -25,4 +28,5 @@ public class Order implements Serializable {
     private BigDecimal discount;
     private BigDecimal price;
     private List<OrderItem> items;
+
 }

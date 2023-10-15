@@ -30,4 +30,5 @@ public class DiscountRule25Percent implements DiscountRule {
         log.debug("Calculated 25% discount amount: {}", discount);
         return discount;
     }
+
 }

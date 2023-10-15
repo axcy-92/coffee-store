@@ -11,9 +11,7 @@ import java.util.List;
 public interface ToppingMapper {
 
     Topping toDto(ToppingEntity entity);
-
     List<Topping> toDtoList(List<ToppingEntity> entities);
-
     ToppingEntity toEntity(InputTopping dto);
 
 }

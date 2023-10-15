@@ -30,7 +30,6 @@ public class OrderEntity {
     private Long id;
 
     private String username;
-
     private BigDecimal originalPrice;
     private BigDecimal discount;
     private BigDecimal price;

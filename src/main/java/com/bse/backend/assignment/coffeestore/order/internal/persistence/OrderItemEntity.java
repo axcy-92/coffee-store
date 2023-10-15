@@ -40,4 +40,5 @@ public class OrderItemEntity {
     private List<Long> toppingIds;
 
     private BigDecimal price;
+
 }

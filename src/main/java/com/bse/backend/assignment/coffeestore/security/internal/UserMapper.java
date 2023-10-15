@@ -10,4 +10,5 @@ public interface UserMapper {
 
     AuthenticationResponse toDto(UserEntity user, String token);
     UserResponse toDto(UserEntity user);
+
 }

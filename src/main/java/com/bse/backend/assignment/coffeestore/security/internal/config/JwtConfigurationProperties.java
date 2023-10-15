@@ -9,4 +9,5 @@ import org.springframework.context.annotation.Configuration;
 @Data
 public class JwtConfigurationProperties {
     private String signingKey;
+
 }

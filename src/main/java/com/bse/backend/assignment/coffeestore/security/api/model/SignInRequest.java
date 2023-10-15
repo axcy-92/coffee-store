@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * A data class representing the request to sign in and authenticate a user.
+ */
 @AllArgsConstructor
 @Builder
 @Data
