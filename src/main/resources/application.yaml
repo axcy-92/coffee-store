@@ -1,0 +1,45 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /coffee-store
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:file:./database/coffee-store
+    username: admin
+    password: bestseller
+    initialize: true
+  sql.init.mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-ui
+      settings:
+        web-allow-others: true
+
+coffee-store:
+  token:
+    signing-key: QUU2Nzk4MjFGMDY0OUMxNUY2QzUxODExMzBFRkVDRjZDQTVFNEVCMDRFNDY5Qjg3NTEwQjQ4QUE0NzI1QTQ0OQ==
+  discount:
+    rule-percent:
+      threshold: 12 # Discount condition: if the total cost of the cart is more than 12 euros
+      discount-percent: 0.25 # 25% discount
+    rule-free-item:
+      min-items: 3 # Discount condition: if there are 3 or more drinks in the cart
+
+logging:
+  level:
+    com.bse.backend.assignment.coffeestore: INFO

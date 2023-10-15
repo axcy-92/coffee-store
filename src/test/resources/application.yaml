@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+    initialize: true
+  sql.init.mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-ui
+
+coffee-store:
+  token:
+    signingKey: QUU2Nzk4MjFGMDY0OUMxNUY2QzUxODExMzBFRkVDRjZDQTVFNEVCMDRFNDY5Qjg3NTEwQjQ4QUE0NzI1QTQ0OQ==
+  discount:
+    rule-percent:
+      threshold: 12
+      discount-percent: 0.25
+    rule-free-item:
+      min-items: 3
+
+logging:
+  level:
+    root: DEBUG
